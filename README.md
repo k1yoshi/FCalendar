@@ -18,7 +18,7 @@ Iniciar:
 		Formatos:	d = dia, m = mes, y = año;
 		FCalendarCombo fecha = new FCalendarCombo(txtFecha); Tomas como formato predeterminado "d/m/y"
 		FCalendarCombo fecha = new FCalendarCombo(txtFecha, "d-m-y"); Como segundo parametro recibe el formato, pueden poder el orden que quieran(en el formato) con el separador que mejor les guste;
-		A la hora de obtener el valor, pueden leer el texto de la caja de texto si es que lo quieren con el formato con el que se inicio o si desean obtenerla en otro formato, al afuncion getDate le pasan como seguno parametro el formato con el que desean la fecha.
+		A la hora de obtener el valor, pueden leer el texto de la caja de texto si es que lo quieren con el formato con el que se inicio o si desean obtenerla en otro formato, al afuncion getDate le pasan como parametro el formato con el que desean la fecha.
 
 Usar
 ------

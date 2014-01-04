@@ -46,6 +46,7 @@ public class FCalendar extends javax.swing.JPanel {
     
     public FCalendar() {
         initComponents();
+        setSize(getPreferredSize());
         
         iniciarValores();
         iniciarStilos();
@@ -71,6 +72,10 @@ public class FCalendar extends javax.swing.JPanel {
         dia_actual = calendario.get(java.util.Calendar.DATE);
         mes_actual = calendario.get(java.util.Calendar.MONTH);
         año_actual = calendario.get(java.util.Calendar.YEAR);
+        for(int i = (año_actual+50); i > 1930 ; i--)
+            comboAños.addItem(i);
+        comboAños.setSelectedItem(año_actual);
+        comboAños.setVisible(false);
     }
     //</editor-fold>
     
@@ -164,6 +169,14 @@ public class FCalendar extends javax.swing.JPanel {
 
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Enero 2014");
+        lblTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblTituloMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTituloMouseReleased(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Lun");
@@ -705,6 +718,22 @@ public class FCalendar extends javax.swing.JPanel {
             lblTitulo.setVisible(true);
         }
     }//GEN-LAST:event_comboAñosItemStateChanged
+
+    private void lblTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTituloMousePressed
+        calendario_tiempo = java.util.Calendar.getInstance();
+        tiempo_ini = calendario_tiempo.getTimeInMillis();
+    }//GEN-LAST:event_lblTituloMousePressed
+
+    private void lblTituloMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTituloMouseReleased
+        calendario_tiempo = java.util.Calendar.getInstance();
+        tiempo_fin = calendario_tiempo.getTimeInMillis();
+        tiempo_transcurrido = tiempo_fin - tiempo_ini;
+        if(tiempo_transcurrido > 300l)
+        {
+            lblTitulo.setVisible(false);
+            comboAños.setVisible(true);
+        }
+    }//GEN-LAST:event_lblTituloMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;
